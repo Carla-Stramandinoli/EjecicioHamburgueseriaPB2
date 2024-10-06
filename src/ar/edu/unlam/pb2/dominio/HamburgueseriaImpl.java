@@ -5,16 +5,23 @@ import java.util.List;
 
 import ar.edu.unlam.pb2.dominio.contratos.Hamburgueseria;
 import ar.edu.unlam.pb2.dominio.entidades.Producto;
+import ar.edu.unlam.pb2.dominio.entidades.Bebida;
+import ar.edu.unlam.pb2.dominio.entidades.Cliente;
 import ar.edu.unlam.pb2.dominio.entidades.Hamburguesa;
 import ar.edu.unlam.pb2.dominio.entidades.PapaFrita;
+import ar.edu.unlam.pb2.dominio.entidades.Pedido;
 
 public class HamburgueseriaImpl implements Hamburgueseria {
 
 	private static final int CANTIDAD_MAXIMA_PRODUCTOS = 5;
 	List<Producto> productos;
+	List<Cliente> clientes;
+	List<Pedido> pedidos;
 
 	public HamburgueseriaImpl() {
 		this.productos = new ArrayList<>();
+		this.clientes = new ArrayList<>();
+		this.pedidos = new ArrayList<>();
 	}
 
 	@Override
@@ -61,6 +68,19 @@ public class HamburgueseriaImpl implements Hamburgueseria {
 			}
 		}
 		return precio;
+	}
+
+	public Boolean agregarCliente(Cliente cliente) {
+		return this.clientes.add(cliente);
+	}
+
+	public void crearPedidoParaCLiente(Cliente cliente, List<Producto> productosPedido) {
+		Pedido pedido = new Pedido();
+		for(Producto producto : productosPedido) {
+				pedido.agregarProducto(producto);
+		}
+		cliente.agregarPedido(pedido);
+		this.pedidos.add(pedido);
 	}
 
 }
