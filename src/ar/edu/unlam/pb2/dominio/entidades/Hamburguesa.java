@@ -3,7 +3,6 @@ package ar.edu.unlam.pb2.dominio.entidades;
 import java.util.Objects;
 
 import ar.edu.unlam.pb2.dominio.enums.CantidadDeMedallones;
-import ar.edu.unlam.pb2.dominio.enums.Tamanio;
 
 public class Hamburguesa extends Producto {
 
