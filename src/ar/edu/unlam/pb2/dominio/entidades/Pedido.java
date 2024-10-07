@@ -18,6 +18,13 @@ public class Pedido {
 	 public List<Producto> getProductos(){
 		 return this.productos;
 	 }
-	 
-	 
+
+	public Double getPrecioTotal() {
+		Double precioTotal = 0.0;
+		for (Producto producto : productos) {
+			Double precioAcumulado = producto.obtenerPrecio();
+			precioTotal += precioAcumulado;
+		}
+		return precioTotal;
+	}
 }

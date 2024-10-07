@@ -25,12 +25,6 @@ public class Bebida extends Producto {
 			}
 			break;
 		case GASEOSA:
-			if (tamanio.equals(Tamanio.CHICA)) {
-				precio = PRECIO_BEBIDA_CHICA_BASE + PRECIO_EXTRA;
-			} else if (tamanio.equals(Tamanio.GRANDE)) {
-				precio = PRECIO_BEBIDA_GRANDE + PRECIO_EXTRA;
-			}
-			break;
 		case JUGO:
 			if (tamanio.equals(Tamanio.CHICA)) {
 				precio = PRECIO_BEBIDA_CHICA_BASE + PRECIO_EXTRA;

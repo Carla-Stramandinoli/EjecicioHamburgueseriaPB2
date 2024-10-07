@@ -396,7 +396,7 @@ public class HamburgueseriaTest {
 	public void dadoQueExisteUnaHamburgueseriaConUnClientePuedoHacerQueElClienteHagaUnPedidoQueContengaUnAguaChicaYUnaHamburguesaSimple() {
 		Cliente cliente = new Cliente("Juan");
 		this.hamburgueseria.agregarCliente(cliente);
-		
+	
 		Bebida agua = new Bebida();
 		agua.setTamanio(Tamanio.CHICA);
 		agua.setTipoBebida(TipoBebida.AGUA);
@@ -425,7 +425,57 @@ public class HamburgueseriaTest {
 		
 		assertTrue(productosEnElPedido.contains(agua));
 		assertTrue(productosEnElPedido.contains(hamburguesa));
+	}
+	
+	@Test
+	public void dadoQueExisteUnaHamburgueseriaConUnPedidoQueContengaUnAguaChicaYUnaHamburguesaSimpleCuandoConsultoElPrecioObtengoDiezMil() {
+		Cliente cliente = new Cliente("Juan");
+		this.hamburgueseria.agregarCliente(cliente);
+	
+		Bebida agua = new Bebida();
+		agua.setTamanio(Tamanio.CHICA);
+		agua.setTipoBebida(TipoBebida.AGUA);
+		
+		Hamburguesa hamburguesa = new Hamburguesa();
+		int cantidadDeMedallones = 1;
+		hamburguesa.setCantidadMedallones(cantidadDeMedallones);
+		
+		List<Producto> listaDeProductosParaElPedido = new ArrayList<>();
+		listaDeProductosParaElPedido.add(agua);
+		listaDeProductosParaElPedido.add(hamburguesa);
+		
+		hamburgueseria.crearPedidoParaCLiente(cliente, listaDeProductosParaElPedido);
 
+		List<Pedido> pedidosDelCliente = cliente.getPedidos();
+		
+		Pedido pedido = pedidosDelCliente.get(0);
 
+		Double precioTotalDelPedidoEsperado = 10000.0;
+		Double precioTotalDelPedido = pedido.getPrecioTotal();
+		
+		assertEquals(precioTotalDelPedidoEsperado, precioTotalDelPedido);
+	}
+	
+	@Test
+	public void dadoQueTengoUnaHamburgueseriaConPedidosDeClientesCuandoConsultoLosPedidosDeJuanObtengoUno() {
+		Cliente cliente = new Cliente("Juan");
+		this.hamburgueseria.agregarCliente(cliente);
+	
+		Bebida agua = new Bebida();
+		agua.setTamanio(Tamanio.CHICA);
+		agua.setTipoBebida(TipoBebida.AGUA);
+		
+		Hamburguesa hamburguesa = new Hamburguesa();
+		int cantidadDeMedallones = 1;
+		hamburguesa.setCantidadMedallones(cantidadDeMedallones);
+		
+		List<Producto> listaDeProductosParaElPedido = new ArrayList<>();
+		listaDeProductosParaElPedido.add(agua);
+		listaDeProductosParaElPedido.add(hamburguesa);
+		
+		hamburgueseria.crearPedidoParaCLiente(cliente, listaDeProductosParaElPedido);
+		
+		int cantidadDePedidosEsperados = 1;
+		assertEquals(cantidadDePedidosEsperados, cliente.getPedidos().size());
 	}
 }

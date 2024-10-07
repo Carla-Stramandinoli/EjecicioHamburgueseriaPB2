@@ -4,7 +4,6 @@ public abstract class Producto {
 
 	private String nombre;
 
-
 	public abstract Double obtenerPrecio();
 
 	public void setNombre(String nombre) {

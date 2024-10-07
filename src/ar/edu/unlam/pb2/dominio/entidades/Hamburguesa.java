@@ -24,11 +24,6 @@ public class Hamburguesa extends Producto {
 	@Override
 	public Double obtenerPrecio() {
 		Double precio = null;
-//		if(this.cantidadMedallones == 1) {
-//			precio = PRECIO_BASE;
-//		} else {
-//			precio = PRECIO_BASE + 2000.0;
-//		}
 		
 		CantidadDeMedallones medallones = this.obtenerOpcionCantidadDeMedallones(this.cantidadMedallones);
 		switch (medallones) {
